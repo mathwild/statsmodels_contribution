@@ -91,15 +91,6 @@ class PredictMixed(object):
             raise AttributeError('You need to call the function fit_re to fit'
                                  + 'before predicting.')
 
-        # verify that inflexion point of retention curve is outside of scope
-        params = self.model.fe_params + self.mu
-        a = params[0]
-        b = params[1]
-        condition = np.exp(-a/(2*b)) - 1
-        if 0 < condition < len(X_fe):
-            fixef = self.model.predict(X_fe)
-            prediction = np.array(fixef)
-            return prediction
 
         fixef = self.model.predict(X_fe)
         A = X_re.values
