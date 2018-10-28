@@ -90,8 +90,7 @@ class PredictMixed(object):
         if any(self.mu) is None:
             raise AttributeError('You need to call the function fit_re to fit'
                                  + 'before predicting.')
-
-
+            
         fixef = self.model.predict(X_fe)
         A = X_re.values
         A = A.reshape((A.shape[0], -1))
